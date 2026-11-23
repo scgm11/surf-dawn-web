@@ -1332,6 +1332,14 @@ if (!still) {
   }, { rootMargin: "0px 0px -6% 0px", threshold: .06 });
   rise.forEach(e => io.observe(e));
 }
+// an ad's campaign token: a link like surfdawn.app/?ct=meta-video-ios-es carries it to the App Store buttons
+// (ct=web otherwise), so App Store Connect counts the downloads of each ad. Kept for the visit, letters, digits, - and _.
+(() => {
+  let ct = new URLSearchParams(location.search).get("ct");
+  try { if (ct) sessionStorage.setItem("ct", ct); else ct = sessionStorage.getItem("ct"); } catch (e) {}
+  if (!ct || !/^[A-Za-z0-9_-]{1,40}$/.test(ct)) return;
+  document.querySelectorAll('a[href*="apps.apple.com"]').forEach(a => { a.href = a.href.replace(/([?&]ct=)[^&]*/, "$1" + ct); });
+})();
 // the films: the launch one wide (tall on a phone held upright), the platform shorts tall, in the page's language
 const dlg = document.getElementById("video"), film = dlg.querySelector("video");
 function openFilm(name) {
