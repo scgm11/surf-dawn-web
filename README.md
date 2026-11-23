@@ -6,6 +6,7 @@ la publica desde `main`: un push es la web en un minuto.
 
 - Las imágenes van en `web/`; las arma `tools/web_images.py` del repo de las apps
   (`python3 tools/web_images.py ../surf-dawn-web/web …`).
+- Los videos van en `video/`: el lanzamiento (`lanzamiento_16x9_*` para pantallas anchas, `lanzamiento_9x16_*` en el teléfono) y un corto por plataforma (`corto_garmin|apple|android_*`), en es/en/pt, con su portada `.jpg`. Los arma `tienda-video/` del repo de las apps (`montaje.py`, y `montaje.py web` hace estas copias livianas); los másteres y las tomas de Runway quedan fuera de git, en `~/Desktop/SURFDAWN/SurfDawn-tienda/video/`.
 - Los manuales en PDF siguen en [`surf-dawn-data/manual/`](https://github.com/scgm11/surf-dawn-data/tree/main/manual),
   donde se publican con cada versión de las apps; la web los enlaza ahí.
 - Los datos que bajan las apps (picos, mareas, normales) siguen en

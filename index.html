@@ -80,6 +80,17 @@
     "https://www.instagram.com/surfdawn.app/",
     "https://apps.apple.com/app/id6829862130"
    ]
+  },
+  {
+   "@type": "VideoObject",
+   "@id": "https://surfdawn.app/#film",
+   "name": "Surf Dawn: las mejores olas del día, en tu muñeca",
+   "description": "Surf Dawn en 34 segundos: el pronóstico de surf de tu pico en Garmin, Apple Watch, iPhone, Wear OS y Android, el aviso de la mañana y Sesión, que cuenta cada ola. Fotos de @vistaleste en Uruguay.",
+   "thumbnailUrl": "https://surfdawn.app/video/lanzamiento_16x9_es.jpg",
+   "contentUrl": "https://surfdawn.app/video/lanzamiento_16x9_es.mp4",
+   "uploadDate": "2026-11-23",
+   "duration": "PT34S",
+   "inLanguage": "es"
   }
  ]
 }
@@ -468,6 +479,16 @@
   footer a { color: var(--label); }
   footer .tm { max-width: 640px; margin: 12px auto 0; padding: 0 16px; font-size: .72rem; line-height: 1.5; }
   :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+  /* the films: one player for all of them, the launch film wide (tall on a phone) and the shorts tall */
+  dialog#video { padding: 0; border: 0; background: transparent; max-width: none; max-height: none; overflow: visible; }
+  dialog#video::backdrop { background: rgba(2, 8, 10, .88); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  dialog#video video { display: block; width: min(92vw, calc(86vh * 16 / 9)); aspect-ratio: 16 / 9; border-radius: 18px; background: #000;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .8); }
+  dialog#video.tall video { width: min(92vw, calc(86vh * 9 / 16)); aspect-ratio: 9 / 16; }
+  dialog#video .x { position: absolute; top: -48px; right: 0; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(255, 255, 255, .08); color: var(--text); display: grid; place-items: center; cursor: pointer; }
+  dialog#video .x svg { width: 18px; height: 18px; }
+  .btn[data-video] svg { width: 16px; height: 16px; }
 </style>
 </head>
 <body>
@@ -487,7 +508,7 @@
       <p class="lead" data-t="lead">Surf Dawn calcula las mejores horas de tu pico con las olas, el viento y la marea, te avisa a la mañana dónde ir, y en el agua cuenta cada ola que agarrás.</p>
       <div class="ctas">
         <a class="btn" href="#instalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-t="install">Instalar gratis</span></a>
-        <a class="btn ghost" href="#dia"><span data-t="how">Ver cómo funciona</span></a>
+        <button class="btn ghost" type="button" data-video="lanzamiento"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-t="vid">Ver el video</span></button>
       </div>
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span data-t="tr1">Gratis</span></span>
@@ -729,7 +750,7 @@
   <span class="eyebrow">Garmin · Connect IQ</span>
   <h2 id="g-h" data-t="gH">En Garmin, siete apps.</h2>
   <p class="lead" data-t="gLead">Instalá las que quieras: cada una anda sola, y juntas te acompañan desde que mirás el reloj hasta que salís del agua.</p>
-  <div class="actions"><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
+  <div class="actions"><button class="btn ghost small" type="button" data-video="garmin"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-t="vShort">Miralo en 18 segundos</span></button><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
 
   <article class="feature">
     <div class="shot pair">
@@ -797,7 +818,7 @@
   <span class="eyebrow">iPhone · Apple Watch</span>
   <h2 id="a-h" data-t="aH">Una sola app, con el Apple Watch adentro.</h2>
   <p class="lead" data-t="aLead">La app de iPhone junta tus sesiones del Apple Watch y de tu Garmin, y trae adentro la app del Apple Watch.</p>
-  <div class="actions"><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
+  <div class="actions"><button class="btn ghost small" type="button" data-video="apple"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-t="vShort">Miralo en 18 segundos</span></button><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
 
   <article class="feature">
     <div class="shot duo"><figure><img data-img="web/iphone-pronostico-{l}.webp" src="web/iphone-pronostico-es.webp" width="440" height="930" alt="Pronóstico de surf de los picos cercanos en Surf Dawn para iPhone" loading="lazy"></figure><figure><img data-img="web/iphone-mapa-{l}.webp" src="web/iphone-mapa-es.webp" width="440" height="930" alt="Mapa del tiempo con las olas y el viento, en el iPhone" loading="lazy"></figure></div>
@@ -829,7 +850,7 @@
   <span class="eyebrow">Android · Wear OS <span class="beta">Beta</span></span>
   <h2 id="and-h" data-t="andH">También en Android.</h2>
   <p class="lead" data-t="andLead">La misma app en tu teléfono Android y en tu reloj con Wear OS. Está en prueba antes de salir en Google Play, y ya la podés usar.</p>
-  <div class="actions"><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
+  <div class="actions"><button class="btn ghost small" type="button" data-video="android"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span data-t="vShort">Miralo en 18 segundos</span></button><a class="btn ghost small pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="mHow">Cómo se usa: el manual en PDF</span></a></div>
 
   <article class="feature">
     <div class="shot"><div class="spots phone cut"><img data-img="web/android-pronostico-{l}.webp" src="web/android-pronostico-es.webp" width="440" height="741" alt="Pronóstico de surf de los picos cercanos en Surf Dawn para Android" loading="lazy"></div></div>
@@ -961,6 +982,11 @@
   </div></div>
 </section>
 
+<dialog id="video" aria-label="Video">
+  <button class="x" type="button" aria-label="Cerrar" data-t-label="close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <video controls playsinline preload="none"></video>
+</dialog>
+
 <footer>
   <span data-t="om">Pronósticos de Open-Meteo</span> · <a id="sup2" href="support.html#es" data-t="sup">Soporte</a> · <a id="priv" href="privacy.html#es" data-t="privL">Privacidad</a> · <a href="https://www.instagram.com/surfdawn.app/" rel="noopener">Instagram</a>
   <p class="tm"><span data-t="andTm">Android es una marca de Google LLC.</span> The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the <a href="https://creativecommons.org/licenses/by/3.0/" rel="noopener">Creative Commons 3.0 Attribution License</a>.</p>
@@ -969,7 +995,7 @@
 <script>
 const T = {
   en: {
-    lDay: "How it works", lFaq: "Questions", lMan: "Manual", install: "Install for free", how: "See how it works",
+    lDay: "How it works", lFaq: "Questions", lMan: "Manual", install: "Install for free", how: "See how it works", vid: "Watch the film", vShort: "Watch it in 18 seconds", close: "Close",
     lDoes: "What it does",
     platsL: "On your watch and on your phone:",
     ecoLead: "Each watch works on its own in the water, and with the phone it all comes together. The same forecast and the same Session on all of them, and free on every one.",
@@ -1082,7 +1108,7 @@ const T = {
     _desc: "Free surf forecast and wave counter: the best hours at your spot, and every wave you catch. On Garmin, Apple Watch, Wear OS, iPhone and Android."
   },
   pt: {
-    lDay: "Como funciona", lFaq: "Perguntas", lMan: "Manual", install: "Instalar grátis", how: "Ver como funciona",
+    lDay: "Como funciona", lFaq: "Perguntas", lMan: "Manual", install: "Instalar grátis", how: "Ver como funciona", vid: "Ver o vídeo", vShort: "Veja em 18 segundos", close: "Fechar",
     lDoes: "O que faz",
     platsL: "No seu relógio e no seu celular:",
     ecoLead: "Cada relógio funciona sozinho na água, e com o celular tudo se junta. A mesma previsão e o mesmo Sessão em todos, e grátis em todos.",
@@ -1198,6 +1224,7 @@ const T = {
 const ES = {};
 document.querySelectorAll("[data-t]").forEach(e => { if (!(e.dataset.t in ES)) ES[e.dataset.t] = e.textContent; });
 document.querySelectorAll("[data-h]").forEach(e => { ES[e.dataset.h] = e.innerHTML; });
+document.querySelectorAll("[data-t-label]").forEach(e => { ES[e.dataset.tLabel] = e.getAttribute("aria-label"); });
 Object.assign(ES, { _pdf: "https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf", _hash: "#es", _title: document.title, _desc: document.querySelector('meta[name="description"]').content });
 T.es = ES;
 
@@ -1227,6 +1254,7 @@ function setLang(l) {
   document.title = d._title;
   document.querySelectorAll("[data-t]").forEach(e => { if (d[e.dataset.t]) e.textContent = d[e.dataset.t]; });
   document.querySelectorAll("[data-h]").forEach(e => { if (d[e.dataset.h]) e.innerHTML = d[e.dataset.h]; });
+  document.querySelectorAll("[data-t-label]").forEach(e => { if (d[e.dataset.tLabel]) e.setAttribute("aria-label", d[e.dataset.tLabel]); });
   document.querySelectorAll("[data-img]").forEach(e => { e.src = e.dataset.img.replace("{l}", l); });
   document.querySelectorAll('a[href^="testers.html"]').forEach(a => { a.setAttribute("href", "testers.html" + d._hash); });
   document.querySelectorAll(".pdf-link").forEach(a => { a.href = d._pdf; });
@@ -1304,6 +1332,21 @@ if (!still) {
   }, { rootMargin: "0px 0px -6% 0px", threshold: .06 });
   rise.forEach(e => io.observe(e));
 }
+// the films: the launch one wide (tall on a phone held upright), the platform shorts tall, in the page's language
+const dlg = document.getElementById("video"), film = dlg.querySelector("video");
+function openFilm(name) {
+  const l = document.documentElement.lang, upright = matchMedia("(max-aspect-ratio: 4/5)").matches;
+  const file = name === "lanzamiento" ? "lanzamiento_" + (upright ? "9x16_" : "16x9_") + l : "corto_" + name + "_" + l;
+  dlg.classList.toggle("tall", name !== "lanzamiento" || upright);
+  film.poster = "video/" + file + ".jpg";
+  film.src = "video/" + file + ".mp4";
+  dlg.showModal();
+  film.play().catch(() => {});
+}
+document.querySelectorAll("[data-video]").forEach(b => b.addEventListener("click", () => openFilm(b.dataset.video)));
+dlg.querySelector(".x").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("close", () => { film.pause(); film.removeAttribute("src"); film.load(); });
 // the bar on top turns solid once the photo is behind
 const bar = document.getElementById("bar");
 const solid = () => bar.classList.toggle("solid", window.scrollY > 40);
