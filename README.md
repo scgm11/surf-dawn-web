@@ -13,4 +13,4 @@ la publica desde `main`: un push es la web en un minuto.
   **El dominio va solo en este repo**: puesto en surf-dawn-data o en un sitio `scgm11.github.io`, GitHub
   redirigiría también los datos de los relojes.
 - Las páginas viejas de `scgm11.github.io/surf-dawn-data/` redirigen acá (con el idioma y la sección).
-- Al cambiar la web, `lastmod` en `sitemap.xml`. Search Console y Bing tienen la propiedad de dominio `surfdawn.app`.
+- Al cambiar la web, `lastmod` en `sitemap.xml`. Search Console tiene la propiedad de dominio `surfdawn.app` (registro TXT en GoDaddy) y Bing la verifica con `BingSiteAuth.xml`: no borrar ninguno de los dos.
