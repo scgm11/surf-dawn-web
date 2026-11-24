@@ -244,6 +244,29 @@
   .scale svg { flex: none; width: 22px; height: 22px; color: var(--teal); margin-top: 2px; }
   .scale b { color: var(--text); font-family: var(--head); }
 
+  /* how to read it: three questions, each with its own colours */
+  .ask { margin-top: 44px; }
+  .ask h3 { font-family: var(--head); font-size: clamp(1.35rem, 3.4vw, 1.75rem); letter-spacing: -.01em; }
+  .ask > p { color: var(--label); margin-top: 8px; max-width: 46rem; }
+  .asks { display: grid; gap: 16px; margin-top: 22px; }
+  @media (min-width: 900px) { .asks { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+  .asks article { border-radius: var(--r); padding: 22px 20px 22px; background: linear-gradient(180deg, var(--card2), var(--card)); border: 1px solid var(--hair);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07); display: flex; flex-direction: column; }
+  .asks .q { display: flex; align-items: baseline; gap: 10px; font-family: var(--head); }
+  .asks .q span { color: var(--teal); font-weight: 600; font-size: .95rem; }
+  .asks .q b { font-size: 1.3rem; }
+  .asks .say { color: var(--dim); font: 500 .8rem var(--head); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+  .asks .viz { height: 104px; margin: 16px 0 14px; display: flex; align-items: flex-end; justify-content: center; }
+  .asks p { color: var(--label); font-size: .97rem; }
+  .asks .lights { gap: 5px; align-items: flex-end; width: 100%; }
+  .asks .lights i { flex: 1; border-radius: 5px 5px 2px 2px; }
+  .asks .nrg { gap: 6px; width: 100%; align-items: flex-end; }
+  .asks .nrg div { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+  .asks .nrg em { font: 600 .74rem var(--head); font-style: normal; color: var(--yellow); height: 1.2em; white-space: nowrap; }
+  .asks .nrg i { width: 100%; border-radius: 5px 5px 2px 2px; margin-top: 3px; }
+  .asks .nrg small { font: 600 .56rem var(--head); letter-spacing: .02em; color: var(--dim); margin-top: 6px; white-space: nowrap; }
+  .asks .rose svg { height: 104px; width: auto; }
+
   /* apps with numbered spots */
   .feature { display: grid; gap: 30px; align-items: center; margin-top: 48px; padding: 30px 24px; border-radius: 32px;
     background: radial-gradient(120% 120% at 15% 0%, #17404A 0%, var(--card) 55%); border: 1px solid var(--hair); }
@@ -600,13 +623,60 @@
     <div>
       <span class="eyebrow" data-t="semE">Lo hacemos simple</span>
       <h2 id="sem-h" data-h="semH"><span class="ln"><span class="g">Verde</span>, entrás.</span> <span class="ln"><span class="r">Rojo</span>, no.</span></h2>
-      <p class="lead" data-t="semLead">Para cada hora, Surf Dawn junta el tamaño y el período de las olas, el viento y cómo le entra el swell a tu playa. A vos te queda una sola cosa para mirar: el color.</p>
+      <p class="lead" data-t="semLead">Para cada hora, Surf Dawn junta la energía de las olas, el viento y cómo le entra el swell a tu playa. A vos te queda una sola cosa para mirar: el color.</p>
       <div class="legend" style="margin-top:22px">
-        <div><i style="background:var(--green)"></i><div><b data-t="lg1">Verde: da</b><p data-t="lg1p">Olas con tamaño y período, y el viento a favor.</p></div></div>
-        <div><i style="background:var(--yellow)"></i><div><b data-t="lg2">Amarillo: más o menos</b><p data-t="lg2p">Se puede surfear, pero algo no acompaña.</p></div></div>
-        <div><i style="background:var(--red)"></i><div><b data-t="lg3">Rojo: no da</b><p data-t="lg3p">Muy chico, muy picado o el viento del mar.</p></div></div>
+        <div><i style="background:var(--green)"></i><div><b data-t="lg1">Verde: da</b><p data-t="lg1p">Tres estrellas o más: olas con energía y el viento a favor.</p></div></div>
+        <div><i style="background:var(--yellow)"></i><div><b data-t="lg2">Amarillo: más o menos</b><p data-t="lg2p">Dos estrellas: se puede surfear, pero algo no acompaña.</p></div></div>
+        <div><i style="background:var(--red)"></i><div><b data-t="lg3">Rojo: no da</b><p data-t="lg3p">Menos de dos estrellas: muy chico, muy picado o el viento del mar.</p></div></div>
       </div>
       <p class="scale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17L17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/></svg><span data-h="scale"><b>Cada zona, su escala.</b> Lo grande depende de dónde surfeás: 2 m es un día enorme en Uruguay y uno normal en Nazaré. Por eso el verde de tu pico sale de un año de olas en tu zona.</span></p>
+    </div>
+  </div>
+  <div class="ask">
+    <h3 data-t="askH">Cómo se lee: tres preguntas</h3>
+    <p data-t="askLead">Todas las pantallas contestan lo mismo y en el mismo orden, cada pregunta con sus propios colores. Así un color nunca quiere decir dos cosas.</p>
+    <div class="asks">
+      <article>
+        <div class="q"><span>1</span><b data-t="ask1">¿Da?</b></div>
+        <div class="say" data-t="ask1s">Verde, amarillo y rojo</div>
+        <div class="viz lights" aria-hidden="true">
+          <i style="height:30%;background:#7A4443"></i><i style="height:38%;background:#7A4443"></i><i style="height:52%;background:var(--yellow)"></i><i style="height:66%;background:var(--yellow)"></i><i style="height:84%;background:var(--green)"></i><i style="height:100%;background:var(--green)"></i><i style="height:92%;background:var(--green)"></i><i style="height:70%;background:var(--yellow)"></i><i style="height:44%;background:#7A4443"></i>
+        </div>
+        <p data-t="ask1p">El color de cada hora dice si da, igual que las estrellas: verde con 3 o más, amarillo con 2 y rojo apagado si no llega.</p>
+      </article>
+      <article>
+        <div class="q"><span>2</span><b data-t="ask2">¿Cuánto mar hay?</b></div>
+        <div class="say" data-t="ask2s">De celeste a fucsia</div>
+        <div class="viz nrg" aria-hidden="true">
+          <div><em></em><i style="height:6%;background:#58707A"></i><small data-t="e1">FLAT</small></div>
+          <div><em></em><i style="height:16%;background:#6CC4FF"></i><small data-t="e2">MÍNIMA</small></div>
+          <div><em>2★</em><i style="height:30%;background:#3D7BFF"></i><small data-t="e3">POCA</small></div>
+          <div><em>3★</em><i style="height:44%;background:#8A55FF"></i><small data-t="e4">MEDIA</small></div>
+          <div><em>4★</em><i style="height:58%;background:#C24BF0"></i><small data-t="e5">MUCHA</small></div>
+          <div><em>5★</em><i style="height:72%;background:#FF3DBB"></i><small data-t="e6">FUERTE</small></div>
+          <div><em></em><i style="height:86%;background:#FF2E7E"></i><small data-t="e7">GRANDE</small></div>
+        </div>
+        <p data-t="ask2p">La energía de las olas, su altura y su período juntos, en siete niveles que no usan los colores del semáforo. De ahí salen las estrellas: POCA alcanza para dos, MEDIA para tres, MUCHA para cuatro y FUERTE para cinco.</p>
+      </article>
+      <article>
+        <div class="q"><span>3</span><b data-t="ask3">¿Cómo entra?</b></div>
+        <div class="say" data-t="ask3s">La rosa y las flechas</div>
+        <div class="viz rose" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none">
+            <defs><clipPath id="ask-r"><circle cx="60" cy="60" r="50"/></clipPath></defs>
+            <circle cx="60" cy="60" r="50" fill="#0B2B36"/>
+            <path d="M0 86c12-5 24-5 36 0s24 5 36 0 24-5 36 0 12 3 12 3v31H0z" fill="#3B3524" clip-path="url(#ask-r)"/>
+            <circle cx="60" cy="60" r="50" stroke="rgba(154,171,178,.35)" stroke-width="1.5"/>
+            <path d="M33 16l17 34" stroke="var(--green)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M58 62l-17-6 11-9z" fill="var(--green)" stroke="var(--green)" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M82 106L70 70" stroke="var(--yellow)" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M67 62l-3 12 10-4z" fill="var(--yellow)" stroke="var(--yellow)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M82 106l8-5M79.5 98l8-5M77 90l8-5" stroke="var(--yellow)" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="60" cy="84" r="3.2" fill="#fff"/>
+          </svg>
+        </div>
+        <p data-t="ask3p">Tu playa desde arriba, con el mar arriba y vos en la orilla. La flecha gruesa es el swell y la fina con plumas, el viento: verde si te favorecen, amarillo a medias y rojo si no.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -1043,10 +1113,15 @@ const T = {
     s6t: "At home", s6h: "Your waves, on the map", s6p: "On your phone, every wave on the satellite, where you paddled and that day's photos.",
     swipe: "Swipe through the day →", today: "Today",
     semE: "We keep it simple", semH: "<span class=\"ln\"><span class=\"g\">Green</span>, paddle out.</span> <span class=\"ln\"><span class=\"r\">Red</span>, don't.</span>",
-    semLead: "For every hour, Surf Dawn puts together the size and period of the waves, the wind and how the swell reaches your beach. You're left with one thing to look at: the color.",
-    lg1: "Green: it's on", lg1p: "Waves with size and period, and the wind on your side.",
-    lg2: "Yellow: so-so", lg2p: "Surfable, but something isn't helping.",
-    lg3: "Red: not worth it", lg3p: "Too small, too choppy or the wind onshore.",
+    semLead: "For every hour, Surf Dawn puts together the energy of the waves, the wind and how the swell reaches your beach. You're left with one thing to look at: the color.",
+    lg1: "Green: it's on", lg1p: "Three stars or more: waves with energy and the wind on your side.",
+    lg2: "Yellow: so-so", lg2p: "Two stars: surfable, but something isn't helping.",
+    lg3: "Red: not worth it", lg3p: "Under two stars: too small, too choppy or the wind onshore.",
+    askH: "How to read it: three questions", askLead: "Every screen answers the same things in the same order, each question with its own colors. So a color never means two things.",
+    ask1: "Is it on?", ask1s: "Green, yellow and red", ask1p: "Each hour's color says whether it's on, just like the stars: green with 3 or more, yellow with 2 and a muted red if it falls short.",
+    ask2: "How much sea is there?", ask2s: "From sky blue to fuchsia", ask2p: "The energy of the waves, their height and period together, in seven levels that stay away from the traffic-light colors. The stars come from it: LOW is enough for two, MEDIUM for three, HIGH for four and STRONG for five.",
+    ask3: "How does it come in?", ask3s: "The rose and the arrows", ask3p: "Your beach from above, with the sea at the top and you on the shore. The thick arrow is the swell and the thin feathered one, the wind: green when they help, yellow halfway and red when they don't.",
+    e1: "FLAT", e2: "MINIMAL", e3: "LOW", e4: "MEDIUM", e5: "HIGH", e6: "STRONG", e7: "BIG",
     scale: "<b>Each zone, its own scale.</b> What counts as big depends on where you surf: 2 m is a huge day in Uruguay and an ordinary one in Nazaré. So your spot's green comes from a year of waves in your zone.",
     gH: "On Garmin, seven apps.", gLead: "Install the ones you want: each works on its own, and together they're with you from the first glance at your watch until you're out of the water.",
     kFace: "Watch face", kField: "Data field", store: "Install on Connect IQ", soon: "Coming soon",
@@ -1156,10 +1231,15 @@ const T = {
     s6t: "Em casa", s6h: "Suas ondas, no mapa", s6p: "No celular, cada onda sobre o satélite, onde você remou e as fotos daquele dia.",
     swipe: "Deslize para ver o dia →", today: "Hoje",
     semE: "A gente simplifica", semH: "<span class=\"ln\"><span class=\"g\">Verde</span>, você entra.</span> <span class=\"ln\"><span class=\"r\">Vermelho</span>, não.</span>",
-    semLead: "Para cada hora, o Surf Dawn junta o tamanho e o período das ondas, o vento e como o swell entra na sua praia. Para você sobra uma coisa só para olhar: a cor.",
-    lg1: "Verde: dá", lg1p: "Ondas com tamanho e período, e o vento a favor.",
-    lg2: "Amarelo: mais ou menos", lg2p: "Dá para surfar, mas algo não ajuda.",
-    lg3: "Vermelho: não dá", lg3p: "Muito pequeno, muito mexido ou vento maral.",
+    semLead: "Para cada hora, o Surf Dawn junta a energia das ondas, o vento e como o swell entra na sua praia. Para você sobra uma coisa só para olhar: a cor.",
+    lg1: "Verde: dá", lg1p: "Três estrelas ou mais: ondas com energia e o vento a favor.",
+    lg2: "Amarelo: mais ou menos", lg2p: "Duas estrelas: dá para surfar, mas algo não ajuda.",
+    lg3: "Vermelho: não dá", lg3p: "Menos de duas estrelas: muito pequeno, muito mexido ou vento maral.",
+    askH: "Como ler: três perguntas", askLead: "Todas as telas respondem a mesma coisa e na mesma ordem, cada pergunta com as suas cores. Assim uma cor nunca quer dizer duas coisas.",
+    ask1: "Dá?", ask1s: "Verde, amarelo e vermelho", ask1p: "A cor de cada hora diz se dá, igual às estrelas: verde com 3 ou mais, amarelo com 2 e vermelho apagado se não chega.",
+    ask2: "Quanto mar tem?", ask2s: "De azul-claro a fúcsia", ask2p: "A energia das ondas, a altura e o período juntos, em sete níveis que não usam as cores do semáforo. Daí saem as estrelas: POUCA dá para duas, MÉDIA para três, MUITA para quatro e FORTE para cinco.",
+    ask3: "Como entra?", ask3s: "A rosa e as setas", ask3p: "A sua praia vista de cima, com o mar em cima e você na beira. A seta grossa é o swell e a fina com penas, o vento: verde se ajudam, amarelo mais ou menos e vermelho se não.",
+    e1: "PLANO", e2: "MÍNIMA", e3: "POUCA", e4: "MÉDIA", e5: "MUITA", e6: "FORTE", e7: "GRANDE",
     scale: "<b>Cada zona, a sua escala.</b> O que é grande depende de onde você surfa: 2 m é um dia enorme no Uruguai e um normal em Nazaré. Por isso o verde do seu pico sai de um ano de ondas na sua região.",
     gH: "No Garmin, sete apps.", gLead: "Instale os que quiser: cada um funciona sozinho, e juntos te acompanham desde a primeira olhada no relógio até sair da água.",
     kFace: "Mostrador", kField: "Campo de dados", store: "Instalar na Connect IQ", soon: "Em breve",
@@ -1315,7 +1395,7 @@ if (!still) {
   const stats = document.querySelector(".stats");
   counted = 0; drawNums();
   const count = () => { const t0 = performance.now(); const tick = t => { const k = Math.min(1, (t - t0) / 1400); counted = 1 - Math.pow(1 - k, 3); drawNums(); if (k < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); };
-  const rise = document.querySelectorAll("main > section > .eyebrow, main > section > h2, main > section > .lead, main > section > .actions, .stats, .step, .hours, .light > div:last-child, .feature, .mini, .drill, .safe, .tiles.four .tile, .node, .flow, .faq details, .store, .memoria .card, .tip, .photoband p, .band .copy");
+  const rise = document.querySelectorAll("main > section > .eyebrow, main > section > h2, main > section > .lead, main > section > .actions, .stats, .step, .hours, .light > div:last-child, .ask h3, .ask > p, .asks article, .feature, .mini, .drill, .safe, .tiles.four .tile, .node, .flow, .faq details, .store, .memoria .card, .tip, .photoband p, .band .copy");
   rise.forEach(e => e.classList.add("rv"));
   const io = new IntersectionObserver(seen => {
     let i = 0;
