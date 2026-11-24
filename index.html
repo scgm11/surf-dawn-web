@@ -460,6 +460,7 @@
   .memoria h2 { margin-bottom: 4px; }
   .memoria .years { font: 500 1.15rem var(--head); color: var(--label); letter-spacing: .12em; }
   .memoria p.why { color: var(--text); font-size: 1.15rem; margin-top: 18px; text-wrap: balance; }
+  .memoria .actions { justify-content: center; margin-top: 22px; }
 
   /* support: the tips, which are given from the phone's app */
   .apoyo { padding-top: 64px; text-align: center; }
@@ -1016,6 +1017,7 @@
     <h2 id="m-h">Gonzalo Moratorio</h2>
     <span class="years">1982 – 2026</span>
     <p class="why" data-t="memWhy">Surf Dawn es gratis en su memoria.</p>
+    <div class="actions"><a class="btn ghost small" href="https://es.wikipedia.org/wiki/Gonzalo_Moratorio" hreflang="es"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span data-t="memBio">Leer su biografía</span></a></div>
   </div>
 </section>
 
@@ -1167,7 +1169,7 @@ const T = {
     nodeG: "Seven apps: the watch face, Forecast, Session and the data fields", nodeI: "Your spots' week and all your sessions, from any watch", nodeA: "Forecast, Session and Train in one app",
     
     qE: "Questions", qH: "What you're wondering.",
-    q1: "How much does it cost?", a1: "Nothing. All the apps are free, with no ads and no accounts, in memory of Gonzalo Moratorio.", memE: "In memory of", memWhy: "Surf Dawn is free in his memory.",
+    q1: "How much does it cost?", a1: "Nothing. All the apps are free, with no ads and no accounts, in memory of Gonzalo Moratorio.", memE: "In memory of", memWhy: "Surf Dawn is free in his memory.", memBio: "Read his biography (in Spanish)",
     q2: "Which watch do I need?", a2: "A round 5-button Garmin (fēnix, epix, Forerunner and more) for the watch face, Forecast and Session; Rings and the data fields run on almost 100 Garmin watches. Or an Apple Watch with watchOS 10 and an iPhone with iOS 17. Or a Wear OS 4 watch and an Android 9 phone, in beta. And with no watch at all, the phone app works on its own.",
     q7: "Does it work with Android?", a7: 'With a Garmin, yes: the watch apps work with Android or with an iPhone, because they talk to the Garmin Connect app on your phone. And the Android app and the Wear OS one are already in testing, before they reach Google Play: <a href="testers.html#en">be one of the first</a>.',
     q8: "Do I have to change my watch face?", a8: "No. Forecast and Session open from any watch face, and Forecast's glance keeps the day's best spot in view. Forecast also puts three complications for your spot (the best hours, and the waves and wind right now) and Session two (your last session and your best window) on Face It and on the Connect IQ watch faces that take them; Garmin's own faces don't show other apps' complications.",
@@ -1285,7 +1287,7 @@ const T = {
     nodeG: "Sete apps: o mostrador, a Previsão, o Sessão e os campos de dados", nodeI: "A semana dos seus picos e todas as suas sessões, de qualquer relógio", nodeA: "Previsão, Sessão e Treinar num só app",
     
     qE: "Perguntas", qH: "O que você está se perguntando.",
-    q1: "Quanto custa?", a1: "Nada. Todos os apps são grátis, sem anúncios e sem conta, em memória de Gonzalo Moratorio.", memE: "Em memória de", memWhy: "O Surf Dawn é grátis em memória dele.",
+    q1: "Quanto custa?", a1: "Nada. Todos os apps são grátis, sem anúncios e sem conta, em memória de Gonzalo Moratorio.", memE: "Em memória de", memWhy: "O Surf Dawn é grátis em memória dele.", memBio: "Ler a biografia dele (em espanhol)",
     q2: "Que relógio eu preciso?", a2: "Um Garmin redondo de 5 botões (fēnix, epix, Forerunner e outros) para o mostrador, a Previsão e o Sessão; os Anéis e os campos de dados funcionam em quase 100 relógios Garmin. Ou um Apple Watch com watchOS 10 e um iPhone com iOS 17. Ou um relógio com Wear OS 4 e um Android 9, em beta. E sem relógio, o app do celular funciona sozinho.",
     q7: "Funciona com Android?", a7: 'Com um Garmin, sim: os apps do relógio funcionam com Android ou com iPhone, porque conversam com o app Garmin Connect do celular. E o app de Android e o do relógio com Wear OS já estão em teste, antes de chegar ao Google Play: <a href="testers.html#pt">seja um dos primeiros</a>.',
     q8: "Preciso trocar o meu mostrador?", a8: "Não. A Previsão e o Sessão abrem de qualquer mostrador, e o glance da Previsão deixa à vista o melhor pico do dia. Além disso, a Previsão põe três complicações do seu pico (as melhores horas, as ondas e o vento de agora) e o Sessão duas (a sua última sessão e a sua melhor janela) no Face It e nos mostradores da Connect IQ que as aceitam; os mostradores da Garmin não mostram complicações de outros apps.",
