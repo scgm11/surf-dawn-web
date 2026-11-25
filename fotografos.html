@@ -28,12 +28,12 @@
     --head: "Barlow", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
   body { margin: 0; overflow-x: clip; color: var(--text); background: var(--bg);
     font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Roboto, sans-serif; }
   img { display: block; max-width: 100%; height: auto; }
   a { color: var(--teal); text-decoration: none; }
-  h1, h2, h3, .btn, .eyebrow, .bar { font-family: var(--head); }
+  h1, h2, h3, .btn, .eyebrow, nav { font-family: var(--head); }
   h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); line-height: .98; font-weight: 600; margin: 0 0 18px; letter-spacing: -.025em; text-wrap: balance; }
   h1 em { font-style: normal; color: var(--teal); }
   h2 { font-size: clamp(1.8rem, 3.8vw, 2.5rem); line-height: 1.05; font-weight: 600; margin: 0 0 14px; letter-spacing: -.015em; text-wrap: balance; }
@@ -43,13 +43,26 @@
   .lead { color: rgba(242, 245, 247, .85); font-size: 1.12rem; max-width: 34rem; text-wrap: pretty; }
   section { padding: 80px 0 0; }
 
-  .bar { position: absolute; z-index: 2; top: 0; left: 0; right: 0; }
-  .bar .wrap { display: flex; align-items: center; gap: 12px; height: 64px; }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.1rem; color: var(--text); margin-right: auto; }
+  /* the bar on top */
+  nav.bar { position: fixed; z-index: 20; top: 0; left: 0; right: 0; transition: background .25s, border-color .25s; border-bottom: 1px solid transparent; }
+  nav.bar.solid { background: rgba(6, 19, 23, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--hair); }
+  nav.bar .wrap { display: flex; align-items: center; gap: 18px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.15rem; color: var(--text); margin-right: auto; white-space: nowrap; }
   .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .links { display: none; gap: 12px; font-weight: 500; }
+  .links a { color: var(--label); white-space: nowrap; } .links a:hover { color: var(--text); }
+  @media (min-width: 1180px) { .links { display: flex; } }  /* from where the page is at its widest: nine links (Fotógrafos since 25/11/2026) */
   .langs { display: flex; gap: 2px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); border-radius: 999px; padding: 3px; }
   .langs button { font: 600 .78rem/1 var(--head); letter-spacing: .06em; color: var(--label); background: none; border: 0; border-radius: 999px; padding: 7px 10px; cursor: pointer; }
   .langs button[aria-pressed="true"] { background: rgba(255, 255, 255, .16); color: var(--text); }
+  .btn.nav-cta { display: none; }
+  @media (min-width: 560px) { .btn.nav-cta { display: inline-flex; } }
+  /* the manual: in the links when they show, and as its own button (just the book, on a phone or a small tablet) when they don't */
+  @media (min-width: 1180px) { .btn.nav-man { display: none; } }
+  @media (max-width: 639px) { .btn.small.nav-man { padding: 9px 12px; } .nav-man span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
+  @media (max-width: 479px) { nav.bar .wrap { gap: 12px; } }
+  @media (max-width: 359px) { .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }  /* the smallest phones: just the icon, so the book fits */
+  .links a[aria-current="page"] { color: var(--text); }   /* the page you are on */
 
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 22px; border-radius: 999px; font-weight: 600; font-size: 1.04rem;
     background: var(--teal); color: #052226; border: 0; white-space: nowrap; box-shadow: 0 10px 28px -10px rgba(61, 214, 208, .7); transition: filter .15s; }
@@ -104,15 +117,19 @@
   .plus { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: rgba(61, 214, 208, .14); color: var(--teal); margin-bottom: 14px; }
   .plus svg { width: 28px; height: 28px; }
 
-  footer { margin-top: 90px; padding: 28px 0 40px; border-top: 1px solid var(--hair); color: var(--dim); font-size: .9rem; }
+  footer { color: var(--dim); font-size: .9rem; text-align: center; padding: 26px 0 50px; margin-top: 90px; }   /* the home page's */
   footer a { color: var(--label); }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 </style>
 </head>
 <body>
 
-<nav class="bar"><div class="wrap">
-  <a class="brand" href="./"><img src="web/icono.png" alt="" width="32" height="32"><span>Surf Dawn</span></a>
-  <div class="langs" role="group" aria-label="Idioma"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="pt">PT</button></div>
+<nav class="bar" id="bar"><div class="wrap">
+  <a class="brand" id="brand" href="./?lang=es"><img src="web/icono.png" width="32" height="32" alt=""><span>Surf Dawn</span></a>
+  <div class="links"><a href="./?lang=es#dia" data-home="dia" data-t="lDay">Cómo funciona</a><a href="./?lang=es#funciones" data-home="funciones" data-t="lDoes">Qué hace</a><a href="./?lang=es#entrenar" data-home="entrenar" data-t="t4">Entrenar</a><a href="./?lang=es#garmin" data-home="garmin">Garmin</a><a href="./?lang=es#apple" data-home="apple">Apple</a><a href="./?lang=es#android" data-home="android">Android</a><a href="./?lang=es#preguntas" data-home="preguntas" data-t="lFaq">Preguntas</a><a href="fotografos.html" aria-current="page" data-t="lPhot">Fotógrafos</a><a class="pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf" data-t="lMan">Manual</a></div>
+  <div class="langs" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="pt">PT</button></div>
+  <a class="btn ghost small nav-man pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="lMan">Manual</span></a>
+  <a class="btn small nav-cta" href="./?lang=es#instalar" data-home="instalar" data-t="install">Instalar gratis</a>
 </div></nav>
 
 <header class="hero">
@@ -185,9 +202,9 @@
   </section>
 </main>
 
-<footer><div class="wrap">
-  Surf Dawn · <a id="home" href="./?lang=es" data-t="home">Inicio</a> · <a id="sup" href="support.html#es" data-t="sup">Soporte</a> · <a id="priv" href="privacy.html#es" data-t="priv">Privacidad</a>
-</div></footer>
+<footer>
+  <span data-t="om">Pronósticos de Open-Meteo</span> · <a id="sup" href="support.html#es" data-t="sup">Soporte</a> · <a id="priv" href="privacy.html#es" data-t="privL">Privacidad</a> · <a href="https://www.instagram.com/surfdawn.app/" rel="noopener">Instagram</a>
+</footer>
 
 <script>
 const T = {
@@ -211,7 +228,8 @@ const T = {
     r3: "Minors, with permission", r3p: "Photos of minors only with their parents' permission.",
     r4: "If someone asks you to take one down", r4p: "You remove it from the folder, and it stops showing in the app.",
     write: "Message us at @surfdawn.app", yE: "Already here", slot: "Your spot here", slot1: "Brazil · Peru · Chile", slot2: "Your beach, in any country",
-    home: "Home", sup: "Support", priv: "Privacy",
+    lDay: "How it works", lDoes: "What it does", t4: "Train", lFaq: "Questions", lPhot: "Photographers", lMan: "Manual", install: "Install for free",
+    om: "Forecasts from Open-Meteo", sup: "Support", privL: "Privacy", _pdf: "https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual-en.pdf",
     altFicha: "@vistaleste's page in Surf Dawn: his photo, his logo, his contacts and his albums",
     altAlb: "The day's albums in Surf Dawn, each with the photos that may be yours"
   },
@@ -235,12 +253,13 @@ const T = {
     r3: "Menores, com permissão", r3p: "Fotos de menores só com a permissão dos pais.",
     r4: "Se alguém pedir para tirar", r4p: "Você tira da pasta, e ela deixa de aparecer no app.",
     write: "Escreva para @surfdawn.app", yE: "Já estão", slot: "O seu lugar aqui", slot1: "Brasil · Peru · Chile", slot2: "Sua praia, em qualquer país",
-    home: "Início", sup: "Suporte", priv: "Privacidade",
+    lDay: "Como funciona", lDoes: "O que faz", t4: "Treinar", lFaq: "Perguntas", lPhot: "Fotógrafos", lMan: "Manual", install: "Instalar grátis",
+    om: "Previsões do Open-Meteo", sup: "Suporte", privL: "Privacidade", _pdf: "https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual-pt.pdf",
     altFicha: "A página de @vistaleste no Surf Dawn: a foto, o logo, os contatos e os álbuns dele",
     altAlb: "Os álbuns do dia no Surf Dawn, cada um com as fotos que podem ser suas"
   }
 };
-const ES = { _title: document.title, _desc: document.querySelector('meta[name="description"]').content };
+const ES = { _title: document.title, _desc: document.querySelector('meta[name="description"]').content, _pdf: "https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf" };
 document.querySelectorAll("[data-t]").forEach(e => { if (!(e.dataset.t in ES)) ES[e.dataset.t] = e.textContent; });
 document.querySelectorAll("[data-h]").forEach(e => { ES[e.dataset.h] = e.innerHTML; });
 document.querySelectorAll("[data-t-alt]").forEach(e => { ES[e.dataset.tAlt] = e.alt; });
@@ -254,7 +273,9 @@ function setLang(l) {
   document.querySelectorAll("[data-h]").forEach(e => { if (d[e.dataset.h]) e.innerHTML = d[e.dataset.h]; });
   document.querySelectorAll("[data-t-alt]").forEach(e => { if (d[e.dataset.tAlt]) e.alt = d[e.dataset.tAlt]; });
   document.querySelectorAll("[data-img]").forEach(e => { e.src = e.dataset.img.replace("{l}", l); });
-  document.getElementById("home").href = "./?lang=" + l;
+  document.getElementById("brand").href = "./?lang=" + l;
+  document.querySelectorAll("[data-home]").forEach(a => { a.href = "./?lang=" + l + "#" + a.dataset.home; });
+  document.querySelectorAll(".pdf-link").forEach(a => { a.href = d._pdf; });
   document.getElementById("sup").href = "support.html#" + l;
   document.getElementById("priv").href = "privacy.html#" + l;
   document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
@@ -271,6 +292,10 @@ if (!T[lang]) {
   lang = n === "pt" ? "pt" : n === "es" ? "es" : "en";
 }
 setLang(lang);
+// the bar turns solid once the page scrolls, as on the home page
+const bar = document.getElementById("bar");
+const solid = () => bar.classList.toggle("solid", window.scrollY > 40);
+addEventListener("scroll", solid, { passive: true }); solid();
 </script>
 </body>
 </html>
