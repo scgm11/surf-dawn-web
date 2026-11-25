@@ -127,16 +127,16 @@
   nav.bar .wrap { display: flex; align-items: center; gap: 18px; height: 64px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.15rem; color: var(--text); margin-right: auto; white-space: nowrap; }
   .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .links { display: none; gap: 18px; font-weight: 500; }
+  .links { display: none; gap: 12px; font-weight: 500; }
   .links a { color: var(--label); white-space: nowrap; } .links a:hover { color: var(--text); }
-  @media (min-width: 1100px) { .links { display: flex; } }
+  @media (min-width: 1180px) { .links { display: flex; } }  /* from where the page is at its widest: nine links (Fotógrafos since 25/11/2026) */
   .langs { display: flex; gap: 2px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); border-radius: 999px; padding: 3px; }
   .langs button { font: 600 .78rem/1 var(--head); letter-spacing: .06em; color: var(--label); background: none; border: 0; border-radius: 999px; padding: 7px 10px; cursor: pointer; }
   .langs button[aria-pressed="true"] { background: rgba(255, 255, 255, .16); color: var(--text); }
   .btn.nav-cta { display: none; }
   @media (min-width: 560px) { .btn.nav-cta { display: inline-flex; } }
   /* the manual: in the links when they show, and as its own button (just the book, on a phone or a small tablet) when they don't */
-  @media (min-width: 1100px) { .btn.nav-man { display: none; } }
+  @media (min-width: 1180px) { .btn.nav-man { display: none; } }
   @media (max-width: 639px) { .btn.small.nav-man { padding: 9px 12px; } .nav-man span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
   @media (max-width: 479px) { nav.bar .wrap { gap: 12px; } }
   @media (max-width: 359px) { .brand span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }  /* the smallest phones: just the icon, so the book fits */
@@ -530,7 +530,7 @@
 
 <nav class="bar" id="bar"><div class="wrap">
   <a class="brand" href="#"><img src="web/icono.png" width="32" height="32" alt=""><span>Surf Dawn</span></a>
-  <div class="links"><a href="#dia" data-t="lDay">Cómo funciona</a><a href="#funciones" data-t="lDoes">Qué hace</a><a href="#entrenar" data-t="t4">Entrenar</a><a href="#garmin">Garmin</a><a href="#apple">Apple</a><a href="#android">Android</a><a href="#preguntas" data-t="lFaq">Preguntas</a><a class="pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf" data-t="lMan">Manual</a></div>
+  <div class="links"><a href="#dia" data-t="lDay">Cómo funciona</a><a href="#funciones" data-t="lDoes">Qué hace</a><a href="#entrenar" data-t="t4">Entrenar</a><a href="#garmin">Garmin</a><a href="#apple">Apple</a><a href="#android">Android</a><a href="#preguntas" data-t="lFaq">Preguntas</a><a href="fotografos.html#es" data-t="lPhot">Fotógrafos</a><a class="pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf" data-t="lMan">Manual</a></div>
   <div class="langs" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="pt">PT</button></div>
   <a class="btn ghost small nav-man pdf-link" href="https://scgm11.github.io/surf-dawn-data/manual/Surf-Dawn-manual.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0M3 6v13M12 6v13M21 6v13"/></svg><span data-t="lMan">Manual</span></a>
   <a class="btn small nav-cta" href="#instalar" data-t="install">Instalar gratis</a>
@@ -1092,7 +1092,7 @@ const T = {
   en: {
     foAlt: "A wave breaking in Uruguay, photo by @vistaleste", foE: "Photos", foNew: "New", foH: "Your wave, in a photo.", foCta: "Get the app", foJoin: "Shoot surf? Join in →",
     foP: "The photographers at your beach upload the day's album, and the photos that fall in your waves show up in your session. You ask them for the ones you want.",
-    lDay: "How it works", lFaq: "Questions", lMan: "Manual", install: "Install for free", how: "See how it works", vid: "Watch the film", vShort: "Watch it in 18 seconds", close: "Close",
+    lPhot: "Photographers", lDay: "How it works", lFaq: "Questions", lMan: "Manual", install: "Install for free", how: "See how it works", vid: "Watch the film", vShort: "Watch it in 18 seconds", close: "Close",
     lDoes: "What it does",
     platsL: "On your watch and on your phone:",
     ecoLead: "Each watch works on its own in the water, and with the phone it all comes together. The same forecast and the same Session on all of them, and free on every one.",
@@ -1210,6 +1210,7 @@ const T = {
     _desc: "Free surf forecast and wave counter: the best hours at your spot, and every wave you catch. On Garmin, Apple Watch, Wear OS, iPhone and Android."
   },
   pt: {
+    lPhot: "Fotógrafos",
     foAlt: "Uma onda quebrando no Uruguai, foto de @vistaleste", foE: "Fotos", foNew: "Novo", foH: "Sua onda, em foto.", foCta: "Baixe o app", foJoin: "Fotografa surf? Participe →",
     foP: "Os fotógrafos da sua praia sobem o álbum do dia, e na sua sessão aparecem as fotos que caem nas suas ondas. Você pede para eles.",
     lDay: "Como funciona", lFaq: "Perguntas", lMan: "Manual", install: "Instalar grátis", how: "Ver como funciona", vid: "Ver o vídeo", vShort: "Veja em 18 segundos", close: "Fechar",
